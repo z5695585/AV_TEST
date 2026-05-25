@@ -102,17 +102,18 @@ int main(void) {
     proto_ctx_t proto;
     proto_init(&proto, NULL, 0);
 
-    /* DEBUG: hardcode pattern 0 to isolate from DIP float */
-    uint8_t cur_sound_dip = 0;
-    uint8_t cur_light_dip = 0;
+    /* Power-on: read DIP and load patterns */
+    dip_debounce_t sd_db = {0}, ld_db = {0};
+    uint8_t cur_sound_dip = dip_read_2bit(SOUND_DIP0_PIN, SOUND_DIP1_PIN);
+    uint8_t cur_light_dip = dip_read_2bit(LIGHT_DIP0_PIN, LIGHT_DIP1_PIN);
+    sd_db.stable_val = cur_sound_dip;
+    ld_db.stable_val = cur_light_dip;
     alarm_sound_load(cur_sound_dip);
     alarm_light_load(cur_light_dip);
     proto_update_state(&proto, cur_sound_dip, cur_light_dip,
                        alarm_sound_current(), alarm_light_current());
 
     uint8_t  rx_buf[16];
-    uint8_t  test_active = 0;
-    uint32_t test_tick = 0;
     uint8_t  heartbeat = 0;
     uint32_t hb_tick = 0;
 
@@ -129,7 +130,23 @@ int main(void) {
         if (alarm_sound_is_active()) alarm_sound_tick(now);
         if (alarm_light_is_active()) alarm_light_tick(now);
 
-        /* TODO: DIP reading disabled during debug — hardcoded pattern 0 */
+        /* Sound DIP change detection (2-bit, pin 19/20, active LOW inverted) */
+        uint8_t s_raw = dip_read_2bit(SOUND_DIP0_PIN, SOUND_DIP1_PIN);
+        uint8_t s_dip = dip_debounced(&sd_db, s_raw, now);
+        if (s_dip > 3) s_dip = 0;
+        if (s_dip != cur_sound_dip) {
+            cur_sound_dip = s_dip;
+            alarm_sound_load(cur_sound_dip);
+        }
+
+        /* Light DIP change detection (2-bit, pin 2/3, active LOW inverted) */
+        uint8_t l_raw = dip_read_2bit(LIGHT_DIP0_PIN, LIGHT_DIP1_PIN);
+        uint8_t l_dip = dip_debounced(&ld_db, l_raw, now);
+        if (l_dip > 3) l_dip = 0;
+        if (l_dip != cur_light_dip) {
+            cur_light_dip = l_dip;
+            alarm_light_load(cur_light_dip);
+        }
 
         uint16_t rx_len = uart_recv(rx_buf, sizeof(rx_buf));
         if (rx_len > 0) {
@@ -144,7 +161,5 @@ int main(void) {
 
         proto_update_state(&proto, cur_sound_dip, cur_light_dip,
                            alarm_sound_current(), alarm_light_current());
-
-        /* TODO: TEST auto-detect disabled during debug — pattern 0 triggers it */
     }
 }
