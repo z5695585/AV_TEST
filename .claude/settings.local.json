@@ -10,7 +10,8 @@
       "Bash(Get-Command gh *)",
       "Bash(Select-Object -ExpandProperty Source)",
       "Bash(C:/Program Files/GitHub CLI/gh.exe auth *)",
-      "Bash(\"C:/Program Files/GitHub CLI/gh.exe\" repo create fire-alarm --private --source=. --remote=origin --push)"
+      "Bash(\"C:/Program Files/GitHub CLI/gh.exe\" repo create fire-alarm --private --source=. --remote=origin --push)",
+      "Bash(git config *)"
     ]
   }
 }
