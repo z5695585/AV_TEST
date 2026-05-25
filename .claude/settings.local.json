@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(where gh *)",
+      "Bash(gh auth *)",
+      "PowerShell(winget install *)",
+      "Read(//c/Program Files/GitHub CLI/**)",
+      "Bash(Get-Command gh *)",
+      "Bash(Select-Object -ExpandProperty Source)",
+      "Bash(C:/Program Files/GitHub CLI/gh.exe auth *)",
+      "Bash(\"C:/Program Files/GitHub CLI/gh.exe\" repo create fire-alarm --private --source=. --remote=origin --push)"
+    ]
+  }
+}

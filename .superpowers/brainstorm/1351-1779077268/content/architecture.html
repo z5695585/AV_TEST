@@ -1,0 +1,37 @@
+<h2>系统架构方案对比</h2>
+<p class="subtitle">面向声光警报器，三种不同层次的抽象方案</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>A. 最小可行架构</h3>
+      <p>单文件 Super Loop，直接操作寄存器/外设。HAL 层仅限于最基础的 GPIO/UART/PWM/Timer 封装。</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>优点</h4><ul><li>快，代码量小</li><li>理解门槛低</li><li>适合当前单功能项目</li></ul></div>
+        <div class="cons"><h4>缺点</h4><ul><li>移植工作量随代码量线性增长</li><li>新项目复用困难</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>B. 模块化 HAL + 业务层</h3>
+      <p>HAL 层封装 MCU 外设（pwm、uart、gpio、timer），业务层使用统一的 driver API。移植只需重写 HAL 层实现。</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>优点</h4><ul><li>移植成本集中在 HAL 层</li><li>业务代码不依赖具体 MCU</li><li>适合固化下来复用</li></ul></div>
+        <div class="cons"><h4>缺点</h4><ul><li>初期抽象需多花 15-20% 时间</li><li>抽象过度可能增加复杂度</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>C. 完整框架式</h3>
+      <p>完整的分层架构，包括 HAL / BSP / 协议栈 / App 层，带消息总线、事件队列、统一配置系统。</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>优点</h4><ul><li>专业级嵌入式架构</li><li>多人协作友好</li><li>扩展性最强</li></ul></div>
+        <div class="cons"><h4>缺点</h4><ul><li>当前项目过度设计</li><li>大量前期成本</li><li>裸机上做消息总线很重</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
