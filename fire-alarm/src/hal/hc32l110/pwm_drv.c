@@ -55,9 +55,6 @@ void pwm_init(uint8_t channel, uint32_t freq_hz, uint8_t duty_pct) {
     stcPortCfg.enStpOut = AdtCHxPortOutLow;
     Adt_CHxXPortConfig(enAdt, AdtCHxA, &stcPortCfg);
 
-    /* Enable double-buffered compare updates for glitch-free duty changes */
-    Adt_EnableValueBuf(enAdt, AdtCHxA, TRUE);
-
     Adt_StartCount(enAdt);
 }
 
