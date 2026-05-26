@@ -88,8 +88,6 @@ int main(void) {
     pwm_init(BUZZ_CH, 3000, 0);
     pwm_init(LED_CH, 3000, 0);
     uart_init(9600);
-    uart_send_str("\r\n=== Fire Alarm v1.0 ===\r\n");
-    uart_send_str("UART 9600-8-N-1 ready. Type HELP for commands.\r\n\r\n");
 
     gpio_init(SOUND_DIP0_PIN, GPIO_INPUT);
     gpio_init(SOUND_DIP1_PIN, GPIO_INPUT);
@@ -115,6 +113,9 @@ int main(void) {
     alarm_light_load(cur_light_dip);
     proto_update_state(&proto, cur_sound_dip, cur_light_dip,
                        alarm_sound_current(), alarm_light_current());
+
+    uart_send_str("\r\n=== Fire Alarm v1.0 ===\r\n");
+    uart_send_str("UART 9600-8-N-1 ready. Type HELP for commands.\r\n\r\n");
 
     uint8_t  rx_buf[16];
     uint8_t  heartbeat = 0;
