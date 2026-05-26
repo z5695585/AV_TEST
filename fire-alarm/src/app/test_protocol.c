@@ -111,6 +111,16 @@ static void h_test(proto_ctx_t *ctx, uint8_t argc, char *argv[]) {
 
 /* --- Command table --- */
 
+static void h_ping(proto_ctx_t *ctx, uint8_t argc, char *argv[]) {
+    (void)ctx; (void)argc; (void)argv;
+    proto_reply("PONG\r\n");
+}
+
+static void h_help(proto_ctx_t *ctx, uint8_t argc, char *argv[]) {
+    (void)ctx; (void)argc; (void)argv;
+    proto_reply("OK HELP: BUZZ ON|OFF <n>, LED ON|OFF <n>, DIP, STATUS, RESET, TEST, PING, HELP\r\n");
+}
+
 static const cmd_entry_t default_commands[] = {
     {"BUZZ",    1, h_buzz},
     {"LED",     1, h_led},
@@ -118,6 +128,8 @@ static const cmd_entry_t default_commands[] = {
     {"STATUS",  0, h_status},
     {"RESET",   0, h_reset},
     {"TEST",    0, h_test},
+    {"PING",    0, h_ping},
+    {"HELP",    0, h_help},
 };
 
 /* --- API --- */

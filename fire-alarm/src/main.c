@@ -88,6 +88,9 @@ int main(void) {
     pwm_init(BUZZ_CH, 3000, 0);
     pwm_init(LED_CH, 3000, 0);
     uart_init(115200);
+    uart_send_str("\r\n=== Fire Alarm v1.0 ===\r\n");
+    uart_send_str("UART 115200-8-N-1 ready. Type HELP for commands.\r\n\r\n");
+
     gpio_init(SOUND_DIP0_PIN, GPIO_INPUT);
     gpio_init(SOUND_DIP1_PIN, GPIO_INPUT);
     gpio_init(LIGHT_DIP0_PIN, GPIO_INPUT);
