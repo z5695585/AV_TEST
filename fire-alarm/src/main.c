@@ -4,8 +4,8 @@
  *   Physical pin → GPIO name (logical#) : Function
  *   Pin 1  → P34 (28) : Buzzer PWM — TIM4_CHA, open-drain → transistor drive
  *   Pin 15 → P25 (21) : LED PWM   — TIM5_CHA, → LED driver IC input
- *   Pin 13 → P23 (19) : UART1 TX
- *   Pin 14 → P24 (20) : UART1 RX
+ *   Pin 12 → P14 (12) : UART0 TX
+ *   Pin 11 → P15 (13) : UART0 RX
  *   Pin 19 → P32 (26) : Sound DIP BIT0 (LSB)
  *   Pin 20 → P33 (27) : Sound DIP BIT1 (MSB)
  *   Pin 2  → P35 (29) : Light DIP BIT0 (LSB)
