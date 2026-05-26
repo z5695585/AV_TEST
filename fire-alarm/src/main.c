@@ -87,9 +87,9 @@ int main(void) {
     /* Init PWM with default freq=3kHz, duty=0 (no output until pattern loads) */
     pwm_init(BUZZ_CH, 3000, 0);
     pwm_init(LED_CH, 3000, 0);
-    uart_init(115200);
+    uart_init(9600);
     uart_send_str("\r\n=== Fire Alarm v1.0 ===\r\n");
-    uart_send_str("UART 115200-8-N-1 ready. Type HELP for commands.\r\n\r\n");
+    uart_send_str("UART 9600-8-N-1 ready. Type HELP for commands.\r\n\r\n");
 
     gpio_init(SOUND_DIP0_PIN, GPIO_INPUT);
     gpio_init(SOUND_DIP1_PIN, GPIO_INPUT);
