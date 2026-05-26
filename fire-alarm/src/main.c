@@ -87,7 +87,8 @@ int main(void) {
     /* Init PWM with default freq=3kHz, duty=0 (no output until pattern loads) */
     pwm_init(BUZZ_CH, 3000, 0);
     pwm_init(LED_CH, 3000, 0);
-    uart_init(9600);
+    /* UART disabled for debug */
+    /* uart_init(9600); */
 
     gpio_init(SOUND_DIP0_PIN, GPIO_INPUT);
     gpio_init(SOUND_DIP1_PIN, GPIO_INPUT);
@@ -114,8 +115,9 @@ int main(void) {
     proto_update_state(&proto, cur_sound_dip, cur_light_dip,
                        alarm_sound_current(), alarm_light_current());
 
-    uart_send_str("\r\n=== Fire Alarm v1.0 ===\r\n");
-    uart_send_str("UART 9600-8-N-1 ready. Type HELP for commands.\r\n\r\n");
+    /* UART disabled for debug */
+    /* uart_send_str("\r\n=== Fire Alarm v1.0 ===\r\n"); */
+    /* uart_send_str("UART 9600-8-N-1 ready. Type HELP for commands.\r\n\r\n"); */
 
     uint8_t  rx_buf[16];
     uint8_t  heartbeat = 0;
@@ -152,10 +154,11 @@ int main(void) {
             alarm_light_load(cur_light_dip);
         }
 
-        uint16_t rx_len = uart_recv(rx_buf, sizeof(rx_buf));
-        if (rx_len > 0) {
-            proto_feed(&proto, rx_buf, rx_len);
-        }
+        /* UART disabled for debug */
+        /* uint16_t rx_len = uart_recv(rx_buf, sizeof(rx_buf)); */
+        /* if (rx_len > 0) { */
+        /*     proto_feed(&proto, rx_buf, rx_len); */
+        /* } */
 
         if (g_reset_pending) {
             g_reset_pending = 0;
