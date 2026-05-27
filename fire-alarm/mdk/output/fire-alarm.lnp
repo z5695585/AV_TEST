@@ -1,0 +1,22 @@
+--cpu Cortex-M0+
+".\output\startup_hc32l110.o"
+".\output\system_hc32l110.o"
+".\output\pattern_engine.o"
+".\output\alarm_sound.o"
+".\output\alarm_light.o"
+".\output\test_protocol.o"
+".\output\pattern_table.o"
+".\output\pwm_drv.o"
+".\output\gpio_drv.o"
+".\output\uart_drv.o"
+".\output\timer_drv.o"
+".\output\main.o"
+".\output\ddl.o"
+".\output\gpio.o"
+".\output\uart.o"
+".\output\adt.o"
+".\output\clk.o"
+".\output\interrupts_hc32l110.o"
+--strict --scatter ".\output\fire-alarm.sct"
+--keep=*Handler --summary_stderr --info summarysizes --map --load_addr_map_info
+--list ".\output\fire-alarm.map" -o .\output\fire-alarm.axf

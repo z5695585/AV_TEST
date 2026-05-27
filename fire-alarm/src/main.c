@@ -87,8 +87,7 @@ int main(void) {
     /* Init PWM with default freq=3kHz, duty=0 (no output until pattern loads) */
     pwm_init(BUZZ_CH, 3000, 0);
     pwm_init(LED_CH, 3000, 0);
-    /* UART disabled for debug */
-    /* uart_init(9600); */
+    uart_init(9600);
 
     gpio_init(SOUND_DIP0_PIN, GPIO_INPUT);
     gpio_init(SOUND_DIP1_PIN, GPIO_INPUT);

@@ -1,0 +1,9 @@
+.\output\test_protocol.o: ..\src\app\test_protocol.c
+.\output\test_protocol.o: ..\src\app\test_protocol.h
+.\output\test_protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\test_protocol.o: ..\src\config\pattern_table.h
+.\output\test_protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+.\output\test_protocol.o: ..\src\driver\uart_drv.h
+.\output\test_protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\test_protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\output\test_protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

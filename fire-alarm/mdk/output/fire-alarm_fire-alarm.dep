@@ -1,0 +1,266 @@
+Dependencies for Project 'fire-alarm', Target 'fire-alarm': (DO NOT MODIFY !)
+CompilerVersion: 5060750::V5.06 update 6 (build 750)::.\ARMCC
+F (.\startup_hc32l110.s)(0x6A1015F8)(--cpu Cortex-M0+ --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include--pd "__UVISION_VERSION SETA 543" --pd "_RTE_ SETA 1"-o .\output\startup_hc32l110.o --depend .\output\startup_hc32l110.d)
+F (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\system_hc32l110.c)(0x6A0C26AE)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\system_hc32l110.o --omf_browse .\output\system_hc32l110.crf --depend .\output\system_hc32l110.d)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\base_types.h)(0x6A0C26AE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\core_cm0plus.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_version.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_compiler.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_armcc.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\system_hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\ddl.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\clk.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\interrupts_hc32l110.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\gpio.h)(0x6A0C26A6)
+I (..\src\hal\hc32l110\ddl_device.h)(0x6A0C286F)
+F (..\src\app\pattern_engine.c)(0x6A0C354C)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\pattern_engine.o --omf_browse .\output\pattern_engine.crf --depend .\output\pattern_engine.d)
+I (..\src\app\pattern_engine.h)(0x6A0C2147)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (..\src\config\pattern_table.h)(0x6A0C3583)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (..\src\driver\pwm_drv.h)(0x6A0C203A)
+F (..\src\app\alarm_sound.c)(0x6A0C2176)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\alarm_sound.o --omf_browse .\output\alarm_sound.crf --depend .\output\alarm_sound.d)
+I (..\src\app\alarm_sound.h)(0x6A0C216D)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (..\src\app\pattern_engine.h)(0x6A0C2147)
+I (..\src\config\pattern_table.h)(0x6A0C3583)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+F (..\src\app\alarm_light.c)(0x6A0C2184)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\alarm_light.o --omf_browse .\output\alarm_light.crf --depend .\output\alarm_light.d)
+I (..\src\app\alarm_light.h)(0x6A0C217B)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (..\src\app\pattern_engine.h)(0x6A0C2147)
+I (..\src\config\pattern_table.h)(0x6A0C3583)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+F (..\src\app\test_protocol.c)(0x6A1517AA)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\test_protocol.o --omf_browse .\output\test_protocol.crf --depend .\output\test_protocol.d)
+I (..\src\app\test_protocol.h)(0x6A0C21AB)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (..\src\config\pattern_table.h)(0x6A0C3583)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (..\src\driver\uart_drv.h)(0x6A0C2044)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x6A16422B)
+F (..\src\config\pattern_table.c)(0x6A13FFBC)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\pattern_table.o --omf_browse .\output\pattern_table.crf --depend .\output\pattern_table.d)
+I (..\src\config\pattern_table.h)(0x6A0C3583)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+F (..\src\hal\hc32l110\pwm_drv.c)(0x6A13F4F1)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\pwm_drv.o --omf_browse .\output\pwm_drv.crf --depend .\output\pwm_drv.d)
+I (..\src\driver\pwm_drv.h)(0x6A0C203A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\ddl.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\base_types.h)(0x6A0C26AE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\core_cm0plus.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_version.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_compiler.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_armcc.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\system_hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\clk.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\interrupts_hc32l110.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\gpio.h)(0x6A0C26A6)
+I (..\src\hal\hc32l110\ddl_device.h)(0x6A0C286F)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\adt.h)(0x6A0C26A6)
+F (..\src\hal\hc32l110\gpio_drv.c)(0x6A0C28C0)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\gpio_drv.o --omf_browse .\output\gpio_drv.crf --depend .\output\gpio_drv.d)
+I (..\src\driver\gpio_drv.h)(0x6A0C203F)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\ddl.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\base_types.h)(0x6A0C26AE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\core_cm0plus.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_version.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_compiler.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_armcc.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\system_hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\clk.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\interrupts_hc32l110.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\gpio.h)(0x6A0C26A6)
+I (..\src\hal\hc32l110\ddl_device.h)(0x6A0C286F)
+F (..\src\hal\hc32l110\uart_drv.c)(0x6A0C28D5)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\uart_drv.o --omf_browse .\output\uart_drv.crf --depend .\output\uart_drv.d)
+I (..\src\driver\uart_drv.h)(0x6A0C2044)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\ddl.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\base_types.h)(0x6A0C26AE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\core_cm0plus.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_version.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_compiler.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_armcc.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\system_hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\clk.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\interrupts_hc32l110.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\gpio.h)(0x6A0C26A6)
+I (..\src\hal\hc32l110\ddl_device.h)(0x6A0C286F)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\uart.h)(0x6A0C26A6)
+F (..\src\hal\hc32l110\timer_drv.c)(0x6A0C28F4)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\timer_drv.o --omf_browse .\output\timer_drv.crf --depend .\output\timer_drv.d)
+I (..\src\driver\timer_drv.h)(0x6A1004E1)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\ddl.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\base_types.h)(0x6A0C26AE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\core_cm0plus.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_version.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_compiler.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_armcc.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\system_hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\clk.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\interrupts_hc32l110.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\gpio.h)(0x6A0C26A6)
+I (..\src\hal\hc32l110\ddl_device.h)(0x6A0C286F)
+F (..\src\main.c)(0x6A1579D3)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\ddl.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\base_types.h)(0x6A0C26AE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\core_cm0plus.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_version.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_compiler.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_armcc.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\system_hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\clk.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\interrupts_hc32l110.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\gpio.h)(0x6A0C26A6)
+I (..\src\hal\hc32l110\ddl_device.h)(0x6A0C286F)
+I (..\src\app\alarm_sound.h)(0x6A0C216D)
+I (..\src\app\alarm_light.h)(0x6A0C217B)
+I (..\src\app\test_protocol.h)(0x6A0C21AB)
+I (..\src\driver\gpio_drv.h)(0x6A0C203F)
+I (..\src\driver\uart_drv.h)(0x6A0C2044)
+I (..\src\driver\timer_drv.h)(0x6A1004E1)
+I (..\src\driver\pwm_drv.h)(0x6A0C203A)
+I (..\src\config\pattern_table.h)(0x6A0C3583)
+F (..\..\HC32L110_DDL_Rev1.3.2\driver\src\ddl.c)(0x6A0C26A6)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\ddl.o --omf_browse .\output\ddl.crf --depend .\output\ddl.d)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\ddl.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\base_types.h)(0x6A0C26AE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\core_cm0plus.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_version.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_compiler.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_armcc.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\system_hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\clk.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\interrupts_hc32l110.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\gpio.h)(0x6A0C26A6)
+I (..\src\hal\hc32l110\ddl_device.h)(0x6A0C286F)
+F (..\..\HC32L110_DDL_Rev1.3.2\driver\src\gpio.c)(0x6A0C26A6)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\gpio.o --omf_browse .\output\gpio.crf --depend .\output\gpio.d)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\gpio.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\ddl.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\base_types.h)(0x6A0C26AE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\core_cm0plus.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_version.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_compiler.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_armcc.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\system_hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\clk.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\interrupts_hc32l110.h)(0x6A0C26A6)
+I (..\src\hal\hc32l110\ddl_device.h)(0x6A0C286F)
+F (..\..\HC32L110_DDL_Rev1.3.2\driver\src\uart.c)(0x6A0C26A6)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\uart.o --omf_browse .\output\uart.crf --depend .\output\uart.d)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\uart.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\ddl.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\base_types.h)(0x6A0C26AE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\core_cm0plus.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_version.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_compiler.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_armcc.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\system_hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\clk.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\interrupts_hc32l110.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\gpio.h)(0x6A0C26A6)
+I (..\src\hal\hc32l110\ddl_device.h)(0x6A0C286F)
+F (..\..\HC32L110_DDL_Rev1.3.2\driver\src\adt.c)(0x6A0C26A6)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\adt.o --omf_browse .\output\adt.crf --depend .\output\adt.d)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\adt.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\ddl.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\base_types.h)(0x6A0C26AE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\core_cm0plus.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_version.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_compiler.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_armcc.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\system_hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\clk.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\interrupts_hc32l110.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\gpio.h)(0x6A0C26A6)
+I (..\src\hal\hc32l110\ddl_device.h)(0x6A0C286F)
+F (..\..\HC32L110_DDL_Rev1.3.2\driver\src\clk.c)(0x6A0C26A6)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\clk.o --omf_browse .\output\clk.crf --depend .\output\clk.d)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\clk.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\ddl.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\base_types.h)(0x6A0C26AE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\core_cm0plus.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_version.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_compiler.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_armcc.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\system_hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\gpio.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\interrupts_hc32l110.h)(0x6A0C26A6)
+I (..\src\hal\hc32l110\ddl_device.h)(0x6A0C286F)
+F (..\..\HC32L110_DDL_Rev1.3.2\driver\src\interrupts_hc32l110.c)(0x6A0C26A6)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\interrupts_hc32l110.o --omf_browse .\output\interrupts_hc32l110.crf --depend .\output\interrupts_hc32l110.d)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\ddl.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\base_types.h)(0x6A0C26AE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x6A16422B)
+I (C:\Keil_v5\ARM\ARMCC\include\assert.h)(0x6A16422B)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\core_cm0plus.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_version.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_compiler.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include\cmsis_armcc.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\system_hc32l110.h)(0x6A0C26AE)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\clk.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\interrupts_hc32l110.h)(0x6A0C26A6)
+I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\gpio.h)(0x6A0C26A6)
+I (..\src\hal\hc32l110\ddl_device.h)(0x6A0C286F)
