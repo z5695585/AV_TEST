@@ -114,15 +114,20 @@ int main(void) {
     proto_update_state(&proto, cur_sound_dip, cur_light_dip,
                        alarm_sound_current(), alarm_light_current());
 
-    uart_send_str("\r\n=== Fire Alarm v1.0 ===\r\n");
-    uart_send_str("UART 9600-8-N-1 ready. Type HELP for commands.\r\n\r\n");
-
     uint8_t  rx_buf[16];
     uint8_t  heartbeat = 0;
     uint32_t hb_tick = 0;
+    uint8_t  banner_sent = 0;
 
     while (1) {
         uint32_t now = timer_get_tick();
+
+        /* Send banner on first loop iteration */
+        if (!banner_sent) {
+            banner_sent = 1;
+            uart_send_str("\r\n=== Fire Alarm v1.0 ===\r\n");
+            uart_send_str("UART 9600-8-N-1 ready. Type HELP for commands.\r\n\r\n");
+        }
 
         /* Heartbeat: toggle P26 every 500ms → 1Hz square wave */
         if ((now - hb_tick) >= 500) {
