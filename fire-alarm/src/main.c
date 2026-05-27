@@ -122,11 +122,10 @@ int main(void) {
     while (1) {
         uint32_t now = timer_get_tick();
 
-        /* Send banner on first loop iteration */
+        /* DEBUG: test if blocking (not UART) causes issue */
         if (!banner_sent) {
             banner_sent = 1;
-            uart_send_str("\r\n=== Fire Alarm v1.0 ===\r\n");
-            uart_send_str("UART 9600-8-N-1 ready. Type HELP for commands.\r\n\r\n");
+            timer_delay_ms(100);  /* simulate banner delay without UART */
         }
 
         /* Heartbeat: toggle P26 every 500ms → 1Hz square wave */
