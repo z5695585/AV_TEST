@@ -7,5 +7,6 @@ void pwm_set_freq(uint8_t channel, uint32_t freq_hz);
 void pwm_set_duty(uint8_t channel, uint8_t duty_pct);
 void pwm_start(uint8_t channel);
 void pwm_stop(uint8_t channel);
+void pwm_reconfig(uint8_t channel, uint32_t freq_hz, uint8_t duty_pct);
 
 #endif

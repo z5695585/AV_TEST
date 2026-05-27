@@ -83,3 +83,21 @@ void pwm_stop(uint8_t channel) {
     en_adt_unit_t enAdt = (channel == 0) ? AdTIM4 : AdTIM5;
     Adt_StopCount(enAdt);
 }
+
+/* Atomic reconfig: stop→clear→set both→start, ensures clean first cycle */
+void pwm_reconfig(uint8_t channel, uint32_t freq_hz, uint8_t duty_pct) {
+    en_adt_unit_t enAdt = (channel == 0) ? AdTIM4 : AdTIM5;
+    uint16_t period, compare;
+
+    if (freq_hz == 0) return;
+
+    period  = (uint16_t)(SystemCoreClock / freq_hz);
+    compare = (uint16_t)((uint32_t)period * duty_pct / 100);
+    s_period[channel] = period;
+
+    Adt_StopCount(enAdt);
+    Adt_ClearCount(enAdt);
+    Adt_SetPeriod(enAdt, period);
+    Adt_SetCompareValue(enAdt, AdtCompareA, compare);
+    Adt_StartCount(enAdt);
+}

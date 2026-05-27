@@ -20,10 +20,21 @@
 
 #define SYSTEM_CLOCK_HZ  8000000U
 
-void proto_buzz_load(uint8_t idx) { alarm_sound_load(idx); }
-void proto_buzz_stop(void)         { alarm_sound_stop(); }
-void proto_led_load(uint8_t idx)   { alarm_light_load(idx); }
-void proto_led_stop(void)          { alarm_light_stop(); }
+void proto_buzz_load(uint8_t idx) {
+    alarm_sound_load(idx);
+    alarm_sound_set_cmd_mode();
+}
+void proto_buzz_stop(void) {
+    alarm_sound_stop();
+}
+
+void proto_led_load(uint8_t idx) {
+    alarm_light_load(idx);
+    alarm_light_set_cmd_mode();
+}
+void proto_led_stop(void) {
+    alarm_light_stop();
+}
 
 static volatile uint8_t g_reset_pending = 0;
 void proto_reset_to_dip(void) { g_reset_pending = 1; }
@@ -103,6 +114,9 @@ int main(void) {
                           "  Fire Alarm Audio-Visual Alert v0.1\r\n"
                           "  HC32L110C6PA | 8MHz XTH | UART 9600-8-N-1\r\n"
                           "========================================\r\n"
+                          "NOTE: Serial terminal MUST append \\r\\n\r\n"
+                          "      (enable 'Send with CR+LF' option)\r\n"
+                          "========================================\r\n"
                           "COMMANDS:\r\n"
                           "  PING           - Test connection, returns PONG\r\n"
                           "  HELP           - Show this command list\r\n"
@@ -114,6 +128,10 @@ int main(void) {
                           "  BUZZ OFF       - Stop buzzer immediately\r\n"
                           "  LED ON <n>     - Start LED pattern n (0-3)\r\n"
                           "  LED OFF        - Stop LED immediately\r\n"
+                          "  FREQ BUZZ <hz> - Set buzzer freq (400-5000Hz)\r\n"
+                          "  FREQ LED <hz>  - Set LED freq (200-2000Hz)\r\n"
+                          "  DUTY BUZZ <pct>- Set buzzer duty (5-50%)\r\n"
+                          "  DUTY LED <pct> - Set LED duty (5-100%)\r\n"
                           "  RESET          - Reload patterns from DIP\r\n"
                           "  TEST           - Load both pattern 0\r\n"
                           "========================================\r\n"
@@ -133,35 +151,51 @@ int main(void) {
             gpio_write(22, heartbeat);
         }
 
+        /* UART RX: drain all available bytes quickly, then process */
+        {
+            uint16_t rx_len = 0;
+            while (rx_len < sizeof(rx_buf) && M0P_UART0->ISR_f.RI) {
+                rx_buf[rx_len++] = (uint8_t)M0P_UART0->SBUF;
+                M0P_UART0->ICR_f.RICLR = 0;
+            }
+            if (rx_len > 0) {
+                proto_feed(&proto, rx_buf, rx_len);
+            }
+        }
+
         if (alarm_sound_is_active()) alarm_sound_tick(now);
         if (alarm_light_is_active()) alarm_light_tick(now);
 
-        /* Sound DIP */
-        uint8_t s_raw = dip_read_2bit(SOUND_DIP0_PIN, SOUND_DIP1_PIN);
-        uint8_t s_dip = dip_debounced(&sd_db, s_raw, now);
-        if (s_dip > 3) s_dip = 0;
-        if (s_dip != cur_sound_dip) {
-            cur_sound_dip = s_dip;
-            alarm_sound_load(cur_sound_dip);
+        /* Sound DIP (only if not in command mode) */
+        if (!alarm_sound_in_cmd_mode()) {
+            uint8_t s_raw = dip_read_2bit(SOUND_DIP0_PIN, SOUND_DIP1_PIN);
+            uint8_t s_dip = dip_debounced(&sd_db, s_raw, now);
+            if (s_dip > 3) s_dip = 0;
+            if (s_dip != cur_sound_dip) {
+                cur_sound_dip = s_dip;
+                alarm_sound_load(cur_sound_dip);
+            }
         }
 
-        /* Light DIP */
-        uint8_t l_raw = dip_read_2bit(LIGHT_DIP0_PIN, LIGHT_DIP1_PIN);
-        uint8_t l_dip = dip_debounced(&ld_db, l_raw, now);
-        if (l_dip > 3) l_dip = 0;
-        if (l_dip != cur_light_dip) {
-            cur_light_dip = l_dip;
-            alarm_light_load(cur_light_dip);
-        }
-
-        /* UART command processing */
-        uint16_t rx_len = uart_recv(rx_buf, sizeof(rx_buf));
-        if (rx_len > 0) {
-            proto_feed(&proto, rx_buf, rx_len);
+        /* Light DIP (only if not in command mode) */
+        if (!alarm_light_in_cmd_mode()) {
+            uint8_t l_raw = dip_read_2bit(LIGHT_DIP0_PIN, LIGHT_DIP1_PIN);
+            uint8_t l_dip = dip_debounced(&ld_db, l_raw, now);
+            if (l_dip > 3) l_dip = 0;
+            if (l_dip != cur_light_dip) {
+                cur_light_dip = l_dip;
+                alarm_light_load(cur_light_dip);
+            }
         }
 
         if (g_reset_pending) {
             g_reset_pending = 0;
+            alarm_sound_clear_overrides();
+            alarm_light_clear_overrides();
+            cur_sound_dip = dip_read_2bit(SOUND_DIP0_PIN, SOUND_DIP1_PIN);
+            cur_light_dip = dip_read_2bit(LIGHT_DIP0_PIN, LIGHT_DIP1_PIN);
+            sd_db.stable_val = cur_sound_dip;
+            ld_db.stable_val = cur_light_dip;
             alarm_sound_load(cur_sound_dip);
             alarm_light_load(cur_light_dip);
         }

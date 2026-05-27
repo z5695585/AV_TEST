@@ -27,3 +27,27 @@ void alarm_light_stop(void) {
 uint8_t alarm_light_current(void) {
     return pattern_engine_current_index(&light_engine);
 }
+
+void alarm_light_set_cmd_mode(void) {
+    pattern_engine_set_cmd_mode(&light_engine);
+}
+
+void alarm_light_clear_cmd_mode(void) {
+    pattern_engine_clear_cmd_mode(&light_engine);
+}
+
+uint8_t alarm_light_in_cmd_mode(void) {
+    return pattern_engine_in_cmd_mode(&light_engine);
+}
+
+void alarm_light_set_freq_ovr(uint32_t hz) {
+    pattern_engine_set_freq_ovr(&light_engine, hz);
+}
+
+void alarm_light_set_duty_ovr(uint8_t pct) {
+    pattern_engine_set_duty_ovr(&light_engine, pct);
+}
+
+void alarm_light_clear_overrides(void) {
+    pattern_engine_clear_overrides(&light_engine);
+}

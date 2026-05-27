@@ -1,6 +1,8 @@
 #include "test_protocol.h"
 #include "pattern_table.h"
 #include "uart_drv.h"
+#include "alarm_sound.h"
+#include "alarm_light.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -109,6 +111,50 @@ static void h_test(proto_ctx_t *ctx, uint8_t argc, char *argv[]) {
     proto_led_load(0);
 }
 
+/* --- FREQ / DUTY handlers --- */
+
+static int parse_channel(const char *s) {
+    if (strcmp(s, "BUZZ") == 0) return 0;
+    if (strcmp(s, "LED")  == 0) return 1;
+    return -1;
+}
+
+static void h_freq(proto_ctx_t *ctx, uint8_t argc, char *argv[]) {
+    (void)ctx;
+    if (argc < 2) { proto_reply("ERR CMD\r\n"); return; }
+    int ch = parse_channel(argv[0]);
+    if (ch < 0) { proto_reply("ERR CH\r\n"); return; }
+    int hz = atoi(argv[1]);
+    if (ch == 0) {
+        if (hz < 400 || hz > 5000) { proto_reply("ERR RANGE BUZZ (400-5000Hz)\r\n"); return; }
+        alarm_sound_set_freq_ovr((uint32_t)hz);
+    } else {
+        if (hz < 200 || hz > 2000) { proto_reply("ERR RANGE LED (200-2000Hz)\r\n"); return; }
+        alarm_light_set_freq_ovr((uint32_t)hz);
+    }
+    char rsp[32];
+    snprintf(rsp, sizeof(rsp), "OK FREQ=%d\r\n", hz);
+    proto_reply(rsp);
+}
+
+static void h_duty(proto_ctx_t *ctx, uint8_t argc, char *argv[]) {
+    (void)ctx;
+    if (argc < 2) { proto_reply("ERR CMD\r\n"); return; }
+    int ch = parse_channel(argv[0]);
+    if (ch < 0) { proto_reply("ERR CH\r\n"); return; }
+    int pct = atoi(argv[1]);
+    if (ch == 0) {
+        if (pct < 5 || pct > 50) { proto_reply("ERR RANGE BUZZ (5-50%)\r\n"); return; }
+        alarm_sound_set_duty_ovr((uint8_t)pct);
+    } else {
+        if (pct < 5 || pct > 100) { proto_reply("ERR RANGE LED (5-100%)\r\n"); return; }
+        alarm_light_set_duty_ovr((uint8_t)pct);
+    }
+    char rsp[32];
+    snprintf(rsp, sizeof(rsp), "OK DUTY=%d\r\n", pct);
+    proto_reply(rsp);
+}
+
 /* --- Command table --- */
 
 static void h_ping(proto_ctx_t *ctx, uint8_t argc, char *argv[]) {
@@ -118,12 +164,14 @@ static void h_ping(proto_ctx_t *ctx, uint8_t argc, char *argv[]) {
 
 static void h_help(proto_ctx_t *ctx, uint8_t argc, char *argv[]) {
     (void)ctx; (void)argc; (void)argv;
-    proto_reply("OK HELP: BUZZ ON|OFF <n>, LED ON|OFF <n>, DIP, STATUS, RESET, TEST, PING, HELP\r\n");
+    proto_reply("OK HELP: BUZZ ON|OFF <n>, LED ON|OFF <n>, DIP, STATUS, RESET, TEST, PING, HELP, FREQ BUZZ|LED <hz>, DUTY BUZZ|LED <pct>\r\n");
 }
 
 static const cmd_entry_t default_commands[] = {
     {"BUZZ",    1, h_buzz},
     {"LED",     1, h_led},
+    {"FREQ",    2, h_freq},
+    {"DUTY",    2, h_duty},
     {"DIP",     0, h_dip},
     {"STATUS",  0, h_status},
     {"RESET",   0, h_reset},

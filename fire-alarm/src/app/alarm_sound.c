@@ -27,3 +27,27 @@ void alarm_sound_stop(void) {
 uint8_t alarm_sound_current(void) {
     return pattern_engine_current_index(&sound_engine);
 }
+
+void alarm_sound_set_cmd_mode(void) {
+    pattern_engine_set_cmd_mode(&sound_engine);
+}
+
+void alarm_sound_clear_cmd_mode(void) {
+    pattern_engine_clear_cmd_mode(&sound_engine);
+}
+
+uint8_t alarm_sound_in_cmd_mode(void) {
+    return pattern_engine_in_cmd_mode(&sound_engine);
+}
+
+void alarm_sound_set_freq_ovr(uint32_t hz) {
+    pattern_engine_set_freq_ovr(&sound_engine, hz);
+}
+
+void alarm_sound_set_duty_ovr(uint8_t pct) {
+    pattern_engine_set_duty_ovr(&sound_engine, pct);
+}
+
+void alarm_sound_clear_overrides(void) {
+    pattern_engine_clear_overrides(&sound_engine);
+}
