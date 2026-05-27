@@ -23,6 +23,7 @@
  * DIP: common = GND → active LOW → software inverts so 1 = ON.
  */
 #include "ddl.h"
+#include "uart.h"
 #include "alarm_sound.h"
 #include "alarm_light.h"
 #include "test_protocol.h"

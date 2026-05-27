@@ -128,7 +128,7 @@ I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\clk.h)(0x6A0C26A6)
 I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\interrupts_hc32l110.h)(0x6A0C26A6)
 I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\gpio.h)(0x6A0C26A6)
 I (..\src\hal\hc32l110\ddl_device.h)(0x6A0C286F)
-F (..\src\main.c)(0x6A164F3D)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
+F (..\src\main.c)(0x6A164FAA)(-c --cpu Cortex-M0+ -D__EVAL -g -O1 --apcs=interwork --split_sections -I ..\src\app -I ..\src\config -I ..\src\driver -I ..\src\hal\hc32l110 -I ..\..\HC32L110_DDL_Rev1.3.2\driver\inc -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\common -I ..\..\HC32L110_DDL_Rev1.3.2\mcu\CMSIS\Core\Include --c99-I.\RTE\_fire-alarm-IC:\Users\Administrator\AppData\Local\Arm\Packs\ARM\CMSIS\6.3.0\CMSIS\Core\Include-IC:\Users\Administrator\AppData\Local\Arm\Packs\HDSC\HC32L110\1.0.3\Device\Include-D__UVISION_VERSION="543" -D_RTE_-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
 I (..\..\HC32L110_DDL_Rev1.3.2\driver\inc\ddl.h)(0x6A0C26A6)
 I (..\..\HC32L110_DDL_Rev1.3.2\mcu\common\base_types.h)(0x6A0C26AE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x6A16422B)
