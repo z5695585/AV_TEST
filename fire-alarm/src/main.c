@@ -1,26 +1,6 @@
-/* src/main.c
+/* src/main.c — Fire Alarm Audio-Visual Alarm Firmware
  *
- * Pin mapping (HC32L110C6PA, TSSOP-20, Rev2.6 datasheet):
- *   Physical pin → GPIO name (logical#) : Function
- *   Pin 1  → P34 (28) : Buzzer PWM — TIM4_CHA, open-drain → transistor drive
- *   Pin 15 → P25 (21) : LED PWM   — TIM5_CHA, → LED driver IC input
- *   Pin 12 → P14 (12) : UART0 TX
- *   Pin 11 → P15 (13) : UART0 RX
- *   Pin 19 → P32 (26) : Sound DIP BIT0 (LSB)
- *   Pin 20 → P33 (27) : Sound DIP BIT1 (MSB)
- *   Pin 2  → P35 (29) : Light DIP BIT0 (LSB)
- *   Pin 3  → P36 (30) : Light DIP BIT1 (MSB)
- *   Pin 5  → P01 (1)  : XTHI (8MHz crystal)
- *   Pin 6  → P02 (2)  : XTHO (8MHz crystal)
- *   Pin 9  → AVCC/DVCC : VDD 3.3V
- *   Pin 7  → AVSS/DVSS : GND
- *   Pin 4  → P00 (0)  : RESETB (NRST, active low)
- *   Pin 17 → P27 (23) : SWDIO
- *   Pin 18 → P31 (25) : SWCLK
- *   Unused: P03(3), P23(19), P24(20), P26(22) → input + pull-up
- *
- * GPIO logical# = Port×8 + Bit. P00=0, P14=12, P23=19, P31=25, etc.
- * DIP: common = GND → active LOW → software inverts so 1 = ON.
+ * HC32L110C6PA, TSSOP-20. 8MHz XTH. UART0 9600-8-N-1 on P14/P15.
  */
 #include "ddl.h"
 #include "uart.h"
@@ -33,16 +13,13 @@
 #include "pwm_drv.h"
 #include "pattern_table.h"
 
-/* --- Pin assignments (GPIO logical numbers = Port×8 + Bit) --- */
 #define SOUND_DIP0_PIN  26   /* P32 */
 #define SOUND_DIP1_PIN  27   /* P33 */
 #define LIGHT_DIP0_PIN  29   /* P35 */
 #define LIGHT_DIP1_PIN  30   /* P36 */
 
-/* System clock: 8MHz external crystal, no PLL (low-power preference) */
 #define SYSTEM_CLOCK_HZ  8000000U
 
-/* --- Command handler callbacks --- */
 void proto_buzz_load(uint8_t idx) { alarm_sound_load(idx); }
 void proto_buzz_stop(void)         { alarm_sound_stop(); }
 void proto_led_load(uint8_t idx)   { alarm_light_load(idx); }
@@ -51,13 +28,11 @@ void proto_led_stop(void)          { alarm_light_stop(); }
 static volatile uint8_t g_reset_pending = 0;
 void proto_reset_to_dip(void) { g_reset_pending = 1; }
 
-/* --- DIP reading (2-bit, active LOW → invert) --- */
-
 static uint8_t dip_read_2bit(uint8_t pin0, uint8_t pin1) {
     uint8_t raw = 0;
     if (gpio_read(pin0)) raw |= 1;
     if (gpio_read(pin1)) raw |= 2;
-    return raw ^ 0x03;  /* invert: common=GND → LOW=ON → 1=ON */
+    return raw ^ 0x03;
 }
 
 typedef struct {
@@ -77,7 +52,6 @@ static uint8_t dip_debounced(dip_debounce_t *d, uint8_t raw, uint32_t now) {
     return d->stable_val;
 }
 
-/* --- main --- */
 int main(void) {
     SystemCoreClock = SYSTEM_CLOCK_HZ;
     SystemInit();
@@ -85,7 +59,6 @@ int main(void) {
 
     Clk_SetPeripheralGate(ClkPeripheralGpio, TRUE);
 
-    /* Init PWM with default freq=3kHz, duty=0 (no output until pattern loads) */
     pwm_init(BUZZ_CH, 3000, 0);
     pwm_init(LED_CH, 3000, 0);
     uart_init(9600);
@@ -94,17 +67,16 @@ int main(void) {
     gpio_init(SOUND_DIP1_PIN, GPIO_INPUT);
     gpio_init(LIGHT_DIP0_PIN, GPIO_INPUT);
     gpio_init(LIGHT_DIP1_PIN, GPIO_INPUT);
-    gpio_init(3,  GPIO_INPUT);  /* P03: unused */
-    gpio_init(19, GPIO_INPUT);  /* P23: unused */
-    gpio_init(20, GPIO_INPUT);  /* P24: unused */
-    gpio_init(22, GPIO_OUTPUT); /* P26: heartbeat debug output */
+    gpio_init(3,  GPIO_INPUT);
+    gpio_init(19, GPIO_INPUT);
+    gpio_init(20, GPIO_INPUT);
+    gpio_init(22, GPIO_OUTPUT);
 
     alarm_sound_init();
     alarm_light_init();
     proto_ctx_t proto;
     proto_init(&proto, NULL, 0);
 
-    /* Power-on: read DIP and load patterns */
     dip_debounce_t sd_db = {0}, ld_db = {0};
     uint8_t cur_sound_dip = dip_read_2bit(SOUND_DIP0_PIN, SOUND_DIP1_PIN);
     uint8_t cur_light_dip = dip_read_2bit(LIGHT_DIP0_PIN, LIGHT_DIP1_PIN);
@@ -115,30 +87,46 @@ int main(void) {
     proto_update_state(&proto, cur_sound_dip, cur_light_dip,
                        alarm_sound_current(), alarm_light_current());
 
-    uint8_t  rx_buf[16];
+    uint8_t  rx_buf[64];
     uint8_t  heartbeat = 0;
-    uint32_t hb_tick = 0;
+    uint32_t hb_tick   = 0;
     uint8_t  banner_sent = 0;
 
     while (1) {
         uint32_t now = timer_get_tick();
 
-        /* Non-blocking banner send: 1 char per loop iteration */
-        if (!banner_sent) {
-            static const char *banner = "\r\n=== Fire Alarm v1.0 ===\r\nUART 9600-8-N-1 ready. Type HELP.\r\n\r\n";
-            static uint8_t b_idx = 0;
-            if (banner[b_idx]) {
-                /* Send one byte if TX ready */
-                if (Uart_GetStatus(0, UartTxEmpty)) {
-                    Uart_SendData(0, (uint8_t)banner[b_idx++]);
-                }
-            } else {
-                banner_sent = 1;
-                b_idx = 0;
-            }
+        /* Banner: send once, 4 seconds after power-on */
+        if (!banner_sent && now >= 4000) {
+            banner_sent = 1;
+            uart_send_str("\r\n"
+                          "========================================\r\n"
+                          "  Fire Alarm Audio-Visual Alert v0.1\r\n"
+                          "  HC32L110C6PA | 8MHz XTH | UART 9600-8-N-1\r\n"
+                          "========================================\r\n"
+                          "COMMANDS:\r\n"
+                          "  PING           - Test connection, returns PONG\r\n"
+                          "  HELP           - Show this command list\r\n"
+                          "  DIP            - Read DIP switch positions\r\n"
+                          "                   (Sound:2bit Light:2bit)\r\n"
+                          "  STATUS         - Show current pattern indices\r\n"
+                          "                   and DIP states\r\n"
+                          "  BUZZ ON <n>    - Start buzzer pattern n (0-3)\r\n"
+                          "  BUZZ OFF       - Stop buzzer immediately\r\n"
+                          "  LED ON <n>     - Start LED pattern n (0-3)\r\n"
+                          "  LED OFF        - Stop LED immediately\r\n"
+                          "  RESET          - Reload patterns from DIP\r\n"
+                          "  TEST           - Load both pattern 0\r\n"
+                          "========================================\r\n"
+                          "SOUND PATTERNS (by DIP / BUZZ ON n):\r\n"
+                          "  0: T3 tone 25% duty | 1: T3 tone 50% duty\r\n"
+                          "  2: Continuous 25%   | 3: Continuous 50%\r\n"
+                          "LIGHT PATTERNS (by DIP / LED ON n):\r\n"
+                          "  0: 20ms flash 10%   | 1: 20ms flash 50%\r\n"
+                          "  2: 20ms flash 100%  | 3: fallback 10%\r\n"
+                          "========================================\r\n\r\n");
         }
 
-        /* Heartbeat: toggle P26 every 500ms → 1Hz square wave */
+        /* Heartbeat: toggle P26 every 500ms */
         if ((now - hb_tick) >= 500) {
             hb_tick = now;
             heartbeat = !heartbeat;
@@ -148,7 +136,7 @@ int main(void) {
         if (alarm_sound_is_active()) alarm_sound_tick(now);
         if (alarm_light_is_active()) alarm_light_tick(now);
 
-        /* Sound DIP change detection (2-bit, pin 19/20, active LOW inverted) */
+        /* Sound DIP */
         uint8_t s_raw = dip_read_2bit(SOUND_DIP0_PIN, SOUND_DIP1_PIN);
         uint8_t s_dip = dip_debounced(&sd_db, s_raw, now);
         if (s_dip > 3) s_dip = 0;
@@ -157,7 +145,7 @@ int main(void) {
             alarm_sound_load(cur_sound_dip);
         }
 
-        /* Light DIP change detection (2-bit, pin 2/3, active LOW inverted) */
+        /* Light DIP */
         uint8_t l_raw = dip_read_2bit(LIGHT_DIP0_PIN, LIGHT_DIP1_PIN);
         uint8_t l_dip = dip_debounced(&ld_db, l_raw, now);
         if (l_dip > 3) l_dip = 0;
@@ -166,11 +154,11 @@ int main(void) {
             alarm_light_load(cur_light_dip);
         }
 
-        /* UART disabled for debug */
-        /* uint16_t rx_len = uart_recv(rx_buf, sizeof(rx_buf)); */
-        /* if (rx_len > 0) { */
-        /*     proto_feed(&proto, rx_buf, rx_len); */
-        /* } */
+        /* UART command processing */
+        uint16_t rx_len = uart_recv(rx_buf, sizeof(rx_buf));
+        if (rx_len > 0) {
+            proto_feed(&proto, rx_buf, rx_len);
+        }
 
         if (g_reset_pending) {
             g_reset_pending = 0;
